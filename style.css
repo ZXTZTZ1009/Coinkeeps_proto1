@@ -1,0 +1,179 @@
+:root {
+    --primary-bg: #99dab3; /* Color from original NetBeans GUI */
+    --list-bg: #f5fae4;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --accent-color: #4d8053;
+}
+
+body {
+    font-family: 'Tahoma', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.nav-btn {
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.nav-btn.danger {
+    border-color: #d9534f;
+    color: #d9534f;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.view {
+    display: none;
+}
+
+.view.active {
+    display: block;
+}
+
+/* Auth Section */
+.auth-card {
+    background: var(--card-bg);
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.auth-card input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Educational Info Section */
+.info-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.info-card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.info-footer {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Calculator Section */
+.calc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.calc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.2fr;
+    gap: 20px;
+}
+
+.calc-box {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+input[type="text"], input[type="number"], select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    font-size: 16px;
+    border: 1px solid var(--primary-bg);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.radio-group {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.list-container {
+    background-color: var(--list-bg);
+    height: 150px;
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+ul { list-style: none; padding: 0; margin: 0; }
+li { padding: 6px 0; border-bottom: 1px solid #e2e2e2; }
+
+.action-btn {
+    background-color: var(--primary-bg);
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.action-btn.primary {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.results-display {
+    margin-top: 15px;
+    text-align: center;
+}
