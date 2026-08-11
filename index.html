@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoinKeeps Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+    
+    <!-- Main Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="logo">CoinKeeps</div>
+        <div class="nav-links" id="navLinks">
+            <button class="nav-btn" onclick="showView('view-info')">Home</button>
+            <button class="nav-btn" onclick="showView('view-learn')">Information</button>
+            <button class="nav-btn" onclick="showView('view-calc')">Calculator</button>
+            <button class="nav-btn danger" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- 1. LOGIN VIEW -->
+        <section id="view-login" class="view active">
+            <div class="auth-card">
+                <h2>Welcome to CoinKeeps</h2>
+                <p>Please log in to manage your budget.</p>
+                <form id="loginForm">
+                    <input type="text" id="loginUser" placeholder="Username" required>
+                    <input type="password" id="loginPass" placeholder="Password" required>
+                    <button type="submit" class="action-btn primary">Log In</button>
+                </form>
+                <p class="auth-toggle">Don't have an account? <a href="#" onclick="showView('view-signup')">Sign up here</a></p>
+            </div>
+        </section>
+
+        <!-- 2. SIGNUP VIEW -->
+        <section id="view-signup" class="view">
+            <div class="auth-card">
+                <h2>Create an Account</h2>
+                <form id="signupForm">
+                    <input type="text" id="signupName" placeholder="Full Name" required>
+                    <input type="text" id="signupUser" placeholder="Username" required>
+                    <input type="password" id="signupPass" placeholder="Password" required>
+                    <button type="submit" class="action-btn primary">Sign Up</button>
+                </form>
+                <p class="auth-toggle">Already have an account? <a href="#" onclick="showView('view-login')">Log in here</a></p>
+            </div>
+        </section>
+
+        <!-- 3. HOME VIEW -->
+        <section id="view-info" class="view">
+            <!-- Hero Banner -->
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1 id="welcomeUserMsg">Welcome to CoinKeeps</h1>
+                    <p class="hero-subtitle">To your guide to financial mindfulness and disciplined saving.</p>
+                    
+                    <div class="hero-buttons">
+                        <button class="action-btn outline" onclick="showView('view-learn')">
+                            <span>📚</span> Learn About Saving
+                        </button>
+                        <button class="action-btn primary" onclick="showView('view-calc')">
+                            Go to Calculator <span>&rarr;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature Highlights -->
+            <div class="features-section">
+                <div class="feature-card">
+                    <h3>Smart Tracking</h3>
+                    <p>Log your daily expenses, categorize them, and monitor exactly where your money goes.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Goal Setting</h3>
+                    <p>Set a target savings percentage and visualize your remaining budget in real-time.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Financial Growth</h3>
+                    <p>Understand the 'why' and 'how' of saving to build healthy, long-term financial habits.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3.5 EDUCATIONAL SIDEBAR VIEW -->
+        <section id="view-learn" class="view">
+            <div class="info-header" style="margin-bottom: 10px;">
+                <h2>Financial Mindfulness</h2>
+                <button class="nav-btn rounded" onclick="showView('view-info')">&larr; Back to Home</button>
+            </div>
+
+            <div class="learn-container">
+                <!-- Sidebar -->
+                <div class="learn-sidebar">
+                    <button class="sidebar-btn active" onclick="showLearnTopic('topic-what', this)">What is Saving?</button>
+                    <button class="sidebar-btn" onclick="showLearnTopic('topic-why', this)">Why Should One Save?</button>
+                    <button class="sidebar-btn" onclick="showLearnTopic('topic-how', this)">How Would One Save?</button>
+                </div>
+                
+                <!-- Content Area -->
+                <div class="learn-content">
+                    <div id="topic-what" class="learn-topic">
+                        <h3>What is Budgeting?</h3>
+                        <p>The process of organizing, planning, and managing your finances by developing a plan is called budgeting. It involves choosing how to spend your money carefully in order to reach those financial goals and keep your expenses from exceeding your income. By following this, individuals, families, and businesses around the world thrive through the ways of wise budgeting.</p>
+                    </div>
+                    <div id="topic-why" class="learn-topic" style="display: none;">
+                        <h3>Why Should One Budget?</h3>
+                        <p>Everyone is encouraged to do budgeting. The concept of budgeting can help you in many ways such as helping to save money, keeping expenses in check, planning your weekly spending, and many more.</p>
+                        <p>Budgeting keeps your finances from decreasing before your next paycheck. And through this, it relieves us of stress and worry by providing us peace of mind, knowing where your money goes in your day-to-day life.</p>
+                    </div>
+                    <div id="topic-how" class="learn-topic" style="display: none;">
+                        <h3>How Would One Save?</h3>
+                        <ul>
+                            <li><strong>Track Spending:</strong> Monitor where every unit of money goes.</li>
+                            <li><strong>Set Goals:</strong> Aim to save a specific percentage (e.g., 20%) of your income first.</li>
+                            <li><strong>Budget Consistently:</strong> Distinguish needs from wants and cut unnecessary recurring expenses.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SAVINGS CALCULATOR VIEW -->
+        <section id="view-calc" class="view">
+            <header class="calc-header">
+                <h2>Savings Calculator</h2>
+            </header>
+
+            <main class="calc-grid">
+                <!-- Left Column: Settings -->
+                <div class="calc-box">
+                    <h3>Income & Goals</h3>
+                    <div class="form-group">
+                        <label>Currency:</label>
+                        <select id="currencyTypeInput">
+                            <option value="₱">₱</option>
+                            <option value="$">$</option>
+                            <option value="€">€</option>
+                            <option value="£">£</option>
+                            <option value="¥">¥</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Allowance Input:</label>
+                        <input type="number" id="allowanceInput" placeholder="0.00">
+                    </div>
+
+                    <div class="radio-group">
+                        <label><input type="radio" name="allowanceFreq" id="dailyRadioB" value="Daily"> Daily</label>
+                        <label><input type="radio" name="allowanceFreq" id="weeklyRadioB" value="Weekly" checked> Weekly</label>
+                        <label><input type="radio" name="allowanceFreq" id="monthlyRadioB" value="Monthly"> Monthly</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Savings Goal (%):</label>
+                        <input type="number" id="savingsGoal" value="20">
+                    </div>
+                </div>
+
+                <!-- Middle Column: Expense Entry -->
+                <div class="calc-box">
+                    <h3>Add Expense</h3>
+                    <input type="text" id="descriptionField" placeholder="Description">
+                    <input type="number" id="expenseAmountField" placeholder="Amount">
+                    
+                    <select id="categoryCombo">
+                        <option value="Select Category">Select Category</option>
+                        <option value="Lunch">Lunch</option>
+                        <option value="Transportation">Transportation</option>
+                        <option value="Supplies/Materials">Supplies/Materials</option>
+                        <option value="Snacks">Snacks</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Leisure">Leisure</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <select id="userFrequency">
+                        <option value="Select Frequency">Select Frequency</option>
+                        <option value="Everyday">Everyday</option>
+                        <option value="Weekdays">Weekdays</option>
+                        <option value="Once">Once</option>
+                        <option value="6 Times a Week">6 Times a Week</option>
+                        <option value="5 Times a Week">5 Times a Week</option>
+                        <option value="4 Times a Week">4 Times a Week</option>
+                        <option value="3 Times a Week">3 Times a Week</option>
+                        <option value="2 Times a Week">2 Times a Week</option>
+                        <option value="Once a Week">Once a Week</option>
+                        <option value="Twice a Month">Twice a Month</option>
+                        <option value="Once a Month">Once a Month</option>
+                    </select>
+
+                    <button id="addExpenseBtn" class="action-btn">Add</button>
+                </div>
+
+                <!-- Right Column: Results & Date Selectors -->
+                <div class="calc-box">
+                    <h3>Timeframe & Results</h3>
+                    <div class="date-group">
+                        <div>
+                            <label>From:</label>
+                            <input type="date" id="fromDate">
+                        </div>
+                        <div style="margin-top:10px;">
+                            <label>To:</label>
+                            <input type="date" id="toDate">
+                        </div>
+                    </div>
+
+                    <div class="list-container">
+                        <ul id="expenseList"></ul>
+                    </div>
+
+                    <button id="clearAllBtn" class="nav-btn danger" style="width: 100%; margin-bottom: 10px;">Clear All Expenses</button>
+
+                    <button id="calcButton" class="action-btn primary">Calculate</button>
+
+                    <div class="results-display">
+                        <h2 id="resultLabel">Result: 0.00</h2>
+                        <p id="remarksLabel"></p>
+                    </div>
+                </div>
+            </main>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
