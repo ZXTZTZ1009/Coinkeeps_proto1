@@ -30,10 +30,10 @@ body {
     flex-wrap: wrap;
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--accent-color);
+.logo img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
 }
 
 .nav-btn {
