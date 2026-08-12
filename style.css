@@ -670,7 +670,7 @@ li { padding: 6px 0; border-bottom: 1px solid #e2e2e2; }
         transform: none;
 
         width: 180px;
-        height: 180px;
+        height: 0px;
 
         margin: 0 auto 20px;
 
